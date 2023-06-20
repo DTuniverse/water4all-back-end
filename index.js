@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Express/JWT");
+  res.send("WATER4ALL");
 });
 
 app.use("/user", userRoutes);

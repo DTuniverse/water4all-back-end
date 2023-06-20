@@ -1,25 +1,26 @@
 const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
-  lat: {
+  title: {
     type: String,
-    required: true,
+  },
+  lat: {
+    type: Number,
   },
   lng: {
-    type: String,
-    required: true,
+    type: Number,
   },
-  color: {
-    type: String,
-  },
-  text: {
+  creator: {
     type: String,
   },
-  // user_id: {
-  //   type: String,
-  //   required: true,
-  // },
+  description: {
+    type: String,
+  },
+  user_id: {
+    type: String,
+  },
 });
+module.exports = mongoose.model("Posts", postSchema);
 // const postSchema = new mongoose.Schema({
 //   title: {
 //     type: String,
@@ -34,4 +35,22 @@ const postSchema = new mongoose.Schema({
 //     required: true,
 //   },
 // });
-module.exports = mongoose.model("Posts", postSchema);
+
+// lat: {
+//   type: String,
+//   required: true,
+// },
+// lng: {
+//   type: String,
+//   required: true,
+// },
+// color: {
+//   type: String,
+// },
+// text: {
+//   type: String,
+// },
+// user_id: {
+//   type: String,
+//   required: true,
+// },

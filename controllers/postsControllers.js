@@ -23,25 +23,38 @@ const getAllPosts = async (req, res) => {
 // };
 
 const createPost = async (req, res) => {
-  const { lat, lng, color, text } = req.body;
+  const { title, lat, lng, creator, description, user_id } = req.body;
   let emptyFields = [];
+  if (!title) {
+    emptyFields.push("title");
+  }
   if (!lat) {
     emptyFields.push("lat");
   }
   if (!lng) {
     emptyFields.push("lng");
   }
-  if (!color) {
-    emptyFields.push("color");
+  if (!creator) {
+    emptyFields.push("creator");
   }
-  if (!text) {
-    emptyFields.push("text");
+  if (!description) {
+    emptyFields.push("description");
+  }
+  if (!user_id) {
+    emptyFields.push("user_id");
   }
   if (emptyFields.length > 0) {
     return res.status(400).json({ error: "Please fill all fields" });
   }
   try {
-    const post = await Post.create({ lat, lng, color, text });
+    const post = await Post.create({
+      title,
+      lat,
+      lng,
+      creator,
+      description,
+      user_id,
+    });
     res.status(201).json(post);
   } catch (error) {
     res.status(500).json({ error: error.message });
