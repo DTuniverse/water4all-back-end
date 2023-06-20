@@ -6,8 +6,10 @@ const app = express.Router();
 
 const requireAuth = require("../middlewares/requireAuth");
 
+app.route("/").get(getAllPosts);
+
 app.use(requireAuth);
 
-app.route("/").get(getAllPosts).post(createPost);
+app.route("/").post(createPost);
 
 module.exports = app;
