@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
   points: {
     type: Number,
   },
+  url:{
+    type: String
+  }
 });
 
 // creating a custom static method

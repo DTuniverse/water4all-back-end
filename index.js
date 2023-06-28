@@ -5,6 +5,7 @@ require("dotenv").config();
 const connectDB = require("./dbinit");
 const userRoutes = require("./routes/user");
 const postsRoute = require("./routes/posts");
+const imageRoute = require("./routes/image");
 
 const PORT = process.env.PORT;
 
@@ -13,6 +14,9 @@ connectDB();
 // Necessary middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
@@ -25,6 +29,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoutes);
 app.use("/posts", postsRoute);
+app.use("/api", imageRoute);
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
