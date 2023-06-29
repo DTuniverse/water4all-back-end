@@ -23,7 +23,7 @@ const getAllPosts = async (req, res) => {
 // };
 
 const createPost = async (req, res) => {
-  const { title, lat, lng, creator, description, user_id } = req.body;
+  const { title, lat, lng, creator, description, address, user_id, verified } = req.body;
   let emptyFields = [];
   if (!title) {
     emptyFields.push("title");
@@ -40,6 +40,9 @@ const createPost = async (req, res) => {
   if (!description) {
     emptyFields.push("description");
   }
+  if (!address) {
+    emptyFields.push("address");
+  }
   if (!user_id) {
     emptyFields.push("user_id");
   }
@@ -53,7 +56,9 @@ const createPost = async (req, res) => {
       lng,
       creator,
       description,
+      address,
       user_id,
+      verified,
     });
     res.status(201).json(post);
   } catch (error) {

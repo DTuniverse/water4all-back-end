@@ -16,9 +16,16 @@ const postSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  address:{
+    type: String,
+  },
   user_id: {
     type: String,
   },
+  verified: {
+    type:Boolean,
+    default: false
+  }
 });
 module.exports = mongoose.model("Posts", postSchema);
 // const postSchema = new mongoose.Schema({
