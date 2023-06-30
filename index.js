@@ -6,6 +6,7 @@ const connectDB = require("./dbinit");
 const userRoutes = require("./routes/user");
 const postsRoute = require("./routes/posts");
 const imageRoute = require("./routes/image");
+const orderRoute = require("./routes/order");
 
 const PORT = process.env.PORT;
 
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 app.use("/user", userRoutes);
 app.use("/posts", postsRoute);
 app.use("/api", imageRoute);
+app.use("/order", orderRoute);
 
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
