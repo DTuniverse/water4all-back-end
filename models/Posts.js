@@ -22,10 +22,13 @@ const postSchema = new mongoose.Schema({
   user_id: {
     type: String,
   },
+  url:{
+    type: String,
+  },
   verified: {
-    type:Boolean,
+    type: Boolean,
     default: false
-  }
+  },
 });
 module.exports = mongoose.model("Posts", postSchema);
 // const postSchema = new mongoose.Schema({
