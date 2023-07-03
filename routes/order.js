@@ -8,7 +8,7 @@ const requireAuth = require("../middlewares/requireAuth");
 
 app.route("/").get(getAllOrders);
 
-app.use(requireAuth);
+// app.use(requireAuth);
 
 app.route("/").post(createOrder);
 
