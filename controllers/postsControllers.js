@@ -24,6 +24,7 @@ const getAllPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
   console.log("posting", req.body)
+  console.log(`res: ${res.body}`)
   const { title, lat, lng, creator, description, address, user_id, url, verified } = req.body;
   let emptyFields = [];
   if (!title) {
@@ -47,9 +48,9 @@ const createPost = async (req, res) => {
   if (!user_id) {
     emptyFields.push("user_id");
   }
-  if (!url) {
-    emptyFields.push("url");
-  }
+  // if (!url) {
+  //   emptyFields.push("url");
+  // }
   if (emptyFields.length > 0) {
     return res.status(400).json({ error: "Please fill all fields" });
   }
@@ -67,11 +68,12 @@ const createPost = async (req, res) => {
       verified,
     });
     res.status(201).json(post);
-    console.log(post);
+    
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 // const createPost = async (req, res) => {
 //   const { title, body } = req.body;
 
