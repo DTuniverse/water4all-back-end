@@ -13,16 +13,8 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-
 const createOrder = async (req, res) => {
-  const { 
-    firstname ,
-    lastname,
-    email,
-    address,
-    comments,
-    user_id 
-    } = req.body;
+  const { firstname, lastname, email, address, comments, user_id } = req.body;
   let emptyFields = [];
   if (!firstname) {
     emptyFields.push("firstname");
@@ -39,20 +31,20 @@ const createOrder = async (req, res) => {
   if (!comments) {
     emptyFields.push("comments");
   }
-  if (!user_id) {
-    emptyFields.push("user_id");
-  }
+  // if (!user_id) {
+  //   emptyFields.push("user_id");
+  // }
   if (emptyFields.length > 0) {
     return res.status(400).json({ error: "Please fill all fields" });
   }
   try {
     const order = await Order.create({
-        firstname ,
-        lastname,
-        email,
-        address,
-        comments,
-        user_id 
+      firstname,
+      lastname,
+      email,
+      address,
+      comments,
+      user_id,
     });
     res.status(201).json(order);
   } catch (error) {
